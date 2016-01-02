@@ -24,12 +24,12 @@ func (h transactionsHandler) Get(req *http.Request) (int, interface{}, http.Head
 	values := req.Form
 
 	if values.Get("account") == "" {
-		return 400, map[string]string{"message": "Must pass `account` query parameter."}, http.Header{"Content-Type": {"application/vnd.error+json"}}
+		return http.StatusBadRequest, map[string]string{"message": "Must pass `account` query parameter."}, http.Header{"Content-Type": {"application/vnd.error+json"}}
 	}
 
 	accountTransactions := h.journalReader.AccountTransactions(values.Get("account"))
 
-	return 200, accountTransactions, http.Header{"Content-Type": {"application/json"}}
+	return http.StatusOK, accountTransactions, http.Header{"Content-Type": {"application/json"}}
 }
 
 func (h transactionsHandler) Post(req *http.Request) (int, interface{}, http.Header) {
@@ -38,10 +38,10 @@ func (h transactionsHandler) Post(req *http.Request) (int, interface{}, http.Hea
 	err := json.NewDecoder(req.Body).Decode(&trans)
 
 	if err != nil {
-		return 400, map[string]string{"message": err.Error()}, http.Header{"Content-Type": {"application/vnd.error+json"}}
+		return http.StatusBadRequest, map[string]string{"message": err.Error()}, http.Header{"Content-Type": {"application/vnd.error+json"}}
 	}
 
 	t := h.journalWriter.AddTransaction(trans)
 
-	return 200, t, http.Header{"Content-Type": {"application/json"}}
+	return http.StatusOK, t, http.Header{"Content-Type": {"application/json"}}
 }
