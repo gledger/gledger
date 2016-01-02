@@ -3,8 +3,8 @@ package ledger
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
+	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/stretchr/testify/require"
 )
 
 func Test_Budgets_Parses_BudgetOutput(t *testing.T) {
