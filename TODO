@@ -1,0 +1,2 @@
+1. Handle different date formats. Right now we only support "2016/10/04"
+2. Handle parse errors. Right now we are very liberal on errors, we basically expect a valid journal.
