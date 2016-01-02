@@ -2,7 +2,9 @@ package ledger
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
+	"os"
 	"os/exec"
 	"text/template"
 )
@@ -12,6 +14,10 @@ type fileReader struct {
 }
 
 func NewFileReader(path string) fileReader {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		panic(fmt.Sprintf(`Journal file "%s" does not exist!`, path))
+	}
+
 	return fileReader{path}
 }
 
