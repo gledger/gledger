@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
+	"net/url"
 
 	"github.com/zombor/ledger"
 )
@@ -12,11 +12,11 @@ type journalReader interface {
 	Budgets() []ledger.Budget
 }
 
-type restHandler struct {
+type rootHandler struct {
 	journal journalReader
 }
 
-func (h restHandler) Root(res http.ResponseWriter, req *http.Request) {
+func (h rootHandler) Get(values url.Values, headers http.Header) (int, interface{}, http.Header) {
 	type account struct {
 		Name    string `json:"name"`
 		Balance string `json:"balance"`
@@ -37,5 +37,5 @@ func (h restHandler) Root(res http.ResponseWriter, req *http.Request) {
 		output.Budgets = append(output.Budgets, account{Name: b.Name, Balance: b.Value})
 	}
 
-	json.NewEncoder(res).Encode(output)
+	return 200, output, http.Header{"Content-type": {"application/json"}}
 }

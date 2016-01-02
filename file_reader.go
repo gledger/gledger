@@ -8,6 +8,10 @@ type fileReader struct {
 	path string
 }
 
+func NewFileReader(path string) fileReader {
+	return fileReader{path}
+}
+
 func (r fileReader) Balance() string {
 	out, err := exec.Command("ledger", "balance", "not", "budget", "--flat", "-f", r.path).Output()
 	if err != nil {
@@ -24,8 +28,4 @@ func (r fileReader) Budget() string {
 	}
 
 	return string(out)
-}
-
-func NewFileReader(path string) fileReader {
-	return fileReader{path}
 }
