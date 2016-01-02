@@ -27,6 +27,10 @@ func (j journal) parsePrintedTransactions(trans string) []Transaction {
 	transactions := make([]Transaction, 0)
 	splitter := regexp.MustCompile(`\s\s+`)
 
+	if trans == "" {
+		return transactions
+	}
+
 	lines := strings.Split(strings.TrimSpace(trans), "\n\n")
 
 	for _, printedTrans := range lines {
