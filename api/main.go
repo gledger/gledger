@@ -27,13 +27,15 @@ func main() {
 		os.Exit(-1)
 	}
 
-	h := rootHandler{
-		journal: ledger.NewJournal(
-			ledger.NewFileReader(*journalPath),
-		),
-	}
+	journal := ledger.NewJournal(
+		ledger.NewFileReader(*journalPath),
+	)
+
+	rootHandler := rootHandler{journal: journal}
+	transactionsHandler := transactionsHandler{journal: journal}
 
 	api := sleepy.NewAPI()
-	api.AddResource(h, "/")
+	api.AddResource(rootHandler, "/")
+	api.AddResource(transactionsHandler, "/transactions")
 	api.Start(*listen)
 }

@@ -3,6 +3,7 @@ package ledger
 type journalReader interface {
 	journalBalanceReader
 	journalBudgetReader
+	journalAccountTransactionReader
 }
 
 type journalBalanceReader interface {
@@ -11,4 +12,8 @@ type journalBalanceReader interface {
 
 type journalBudgetReader interface {
 	Budget() string
+}
+
+type journalAccountTransactionReader interface {
+	AccountTransaction(string) string
 }
