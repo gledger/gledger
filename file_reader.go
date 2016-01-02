@@ -29,3 +29,12 @@ func (r fileReader) Budget() string {
 
 	return string(out)
 }
+
+func (r fileReader) AccountTransaction(account string) string {
+	out, err := exec.Command("ledger", "register", "not", "budget", "and", account, "-S", "-d", "-y", `%Y-%m-%d`, "-f", r.path).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(out)
+}
