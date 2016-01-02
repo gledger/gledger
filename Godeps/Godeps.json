@@ -16,6 +16,10 @@
 		{
 			"ImportPath": "github.com/stretchr/testify/require",
 			"Rev": "33a31e5dbed8302d5ab7e6d12b416e95c2c4ebc0"
+		},
+		{
+			"ImportPath": "github.com/twinj/uuid",
+			"Rev": "89173bcdda19db0eb88aef1e1cb1cb2505561d31"
 		}
 	]
 }

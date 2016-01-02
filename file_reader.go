@@ -1,7 +1,10 @@
 package ledger
 
 import (
+	"bytes"
+	"io/ioutil"
 	"os/exec"
+	"text/template"
 )
 
 type fileReader struct {
@@ -37,4 +40,25 @@ func (r fileReader) AccountTransaction(account string) string {
 	}
 
 	return string(out)
+}
+
+func (r fileReader) Print() string {
+	out, err := exec.Command("ledger", "print", "-f", r.path).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(out)
+}
+
+func (r fileReader) WriteJournal(trans []Transaction) error {
+	t := template.Must(template.New("journal").Parse(journalTemplate))
+
+	var b bytes.Buffer
+	err := t.Execute(&b, trans)
+	if err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(r.path, b.Bytes(), 0644)
 }

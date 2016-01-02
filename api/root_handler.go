@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"net/url"
 
 	"github.com/zombor/go-ledger"
 )
@@ -16,7 +15,7 @@ type rootHandler struct {
 	journal journalReader
 }
 
-func (h rootHandler) Get(values url.Values, headers http.Header) (int, interface{}, http.Header) {
+func (h rootHandler) Get(*http.Request) (int, interface{}, http.Header) {
 	type account struct {
 		Name    string `json:"name"`
 		Balance string `json:"balance"`

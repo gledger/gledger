@@ -5,13 +5,19 @@ import (
 )
 
 type Transaction struct {
-	Date     time.Time
-	Name     string
-	Accounts []Account
+	Id       string    `json:"id"`
+	Date     time.Time `json:"date"`
+	Payee    string    `json:"payee"`
+	Accounts []Account `json:"accounts"`
+}
+
+func (t Transaction) JournalDate() string {
+	return t.Date.Format("2006/01/02")
 }
 
 type Account struct {
-	Name, Amount string
+	Name   string `json:"name"`
+	Amount string `json:"amount"`
 }
 
 type TransactionsByDate []Transaction

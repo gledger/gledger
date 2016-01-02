@@ -32,7 +32,10 @@ func main() {
 	)
 
 	rootHandler := rootHandler{journal: journal}
-	transactionsHandler := transactionsHandler{journal: journal}
+	transactionsHandler := transactionsHandler{
+		journalReader: journal,
+		journalWriter: journal,
+	}
 
 	api := sleepy.NewAPI()
 	api.AddResource(rootHandler, "/")

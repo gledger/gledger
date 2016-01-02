@@ -10,8 +10,8 @@ func checkTransaction(expected, actual Transaction, t *testing.T) {
 		t.Errorf("Expected Date to be %s, but was %s", expected.Date, actual.Date)
 	}
 
-	if actual.Name != expected.Name {
-		t.Errorf("Expected Name to be `%s`, but was `%s`", expected.Name, actual.Name)
+	if actual.Payee != expected.Payee {
+		t.Errorf("Expected Payee to be `%s`, but was `%s`", expected.Payee, actual.Payee)
 	}
 
 	if len(actual.Accounts) != len(expected.Accounts) {
@@ -39,8 +39,8 @@ Assets:Checking`
 
 		checkTransaction(
 			Transaction{
-				Date: time.Date(2016, time.January, 1, 0, 0, 0, 0, time.UTC),
-				Name: "Pacific Bell",
+				Date:  time.Date(2016, time.January, 1, 0, 0, 0, 0, time.UTC),
+				Payee: "Pacific Bell",
 				Accounts: []Account{
 					Account{Name: "Expenses:Utilities:Phone", Amount: "$23.00"},
 					Account{Name: "Assets:Checking", Amount: ""},
@@ -71,8 +71,8 @@ Liabilities:American Express`
 
 		checkTransaction(
 			Transaction{
-				Date: time.Date(2016, time.January, 1, 0, 0, 0, 0, time.UTC),
-				Name: "Pacific Bell",
+				Date:  time.Date(2016, time.January, 1, 0, 0, 0, 0, time.UTC),
+				Payee: "Pacific Bell",
 				Accounts: []Account{
 					Account{Name: "Expenses:Utilities:Phone", Amount: "$23.00"},
 					Account{Name: "Assets:Checking", Amount: ""},
@@ -84,8 +84,8 @@ Liabilities:American Express`
 
 		checkTransaction(
 			Transaction{
-				Date: time.Date(2016, time.January, 2, 0, 0, 0, 0, time.UTC),
-				Name: "ComEd",
+				Date:  time.Date(2016, time.January, 2, 0, 0, 0, 0, time.UTC),
+				Payee: "ComEd",
 				Accounts: []Account{
 					Account{Name: "Expenses:Utilities:Electricity", Amount: "$54.32"},
 					Account{Name: "Liabilities:American Express", Amount: ""},
