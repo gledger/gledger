@@ -36,5 +36,5 @@ func (h rootHandler) Get(*http.Request) (int, interface{}, http.Header) {
 		output.Budgets = append(output.Budgets, account{Name: b.Name, Balance: b.Value})
 	}
 
-	return 200, output, http.Header{"Content-type": {"application/json"}}
+	return http.StatusOK, output, http.Header{"Content-type": {"application/json"}}
 }
