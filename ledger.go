@@ -19,7 +19,7 @@ func ParseLedger(input string) []Transaction {
 
 		transactions = append(transactions, Transaction{
 			Date:     date,
-			Name:     name,
+			Payee:    name,
 			Accounts: accounts,
 		})
 	}

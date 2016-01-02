@@ -15,6 +15,7 @@ func (j journal) AccountTransactions(account string) []AccountTransaction {
 	accountTransactions := make([]AccountTransaction, 0)
 
 	for _, l := range lines {
+		// TODO: Sometimes a single transaction will have multiple lines and break this loop
 		fields := lineSplitter.Split(l, -1)
 
 		if len(fields) == 4 {
