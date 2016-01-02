@@ -17,6 +17,15 @@ func (r fileReader) Balance() string {
 	return string(out)
 }
 
+func (r fileReader) Budget() string {
+	out, err := exec.Command("ledger", "balance", "Budget:Assets", "--flat", "-f", r.path).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(out)
+}
+
 func NewFileReader(path string) fileReader {
 	return fileReader{path}
 }
