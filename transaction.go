@@ -14,8 +14,8 @@ type Account struct {
 	Name, Amount string
 }
 
-type Ledger []Transaction
+type TransactionsByDate []Transaction
 
-func (l Ledger) Len() int           { return len(l) }
-func (l Ledger) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
-func (l Ledger) Less(i, j int) bool { return l[i].Date.Before(l[j].Date) }
+func (l TransactionsByDate) Len() int           { return len(l) }
+func (l TransactionsByDate) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
+func (l TransactionsByDate) Less(i, j int) bool { return l[i].Date.Before(l[j].Date) }
