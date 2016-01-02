@@ -3,7 +3,7 @@ package require
 import (
 	"time"
 
-	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 type Assertions struct {

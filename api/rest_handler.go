@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/zombor/ledger"
+	"github.com/zombor/go-ledger"
 )
 
 type journalReader interface {

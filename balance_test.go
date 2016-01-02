@@ -3,8 +3,8 @@ package ledger
 import (
 	"testing"
 
-	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
-	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/stretchr/testify/require"
+	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/require"
 )
 
 func Test_Balances_Parses_BalanceOutput(t *testing.T) {

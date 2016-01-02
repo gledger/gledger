@@ -4,8 +4,8 @@ import (
 	"flag"
 	"os"
 
-	"github.com/zombor/ledger"
-	"github.com/zombor/ledger/Godeps/_workspace/src/github.com/dougblack/sleepy"
+	"github.com/zombor/go-ledger"
+	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/dougblack/sleepy"
 )
 
 func main() {
