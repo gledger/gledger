@@ -33,7 +33,7 @@ func Test_DeleteTransaction_DeletesTransactionById(t *testing.T) {
 					[]Transaction{
 						Transaction{
 							Id:    "bcdef",
-							Date:  time.Date(2016, time.January, 2, 0, 0, 0, 0, time.UTC),
+							Date:  TransactionDate(time.Date(2016, time.January, 2, 0, 0, 0, 0, time.UTC)),
 							Payee: "Amazon",
 							Accounts: []Account{
 								Account{

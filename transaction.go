@@ -1,30 +1,40 @@
 package ledger
 
 import (
+	"strings"
 	"time"
 )
 
+type TransactionDate time.Time
+
+func (t *TransactionDate) UnmarshalJSON(buf []byte) error {
+	tt, err := time.Parse("2006-01-02", strings.Trim(string(buf), `"`))
+	if err != nil {
+		return err
+	}
+	*t = TransactionDate(tt)
+	return nil
+}
+
+func (t TransactionDate) MarshalJSON() ([]byte, error) {
+	return []byte(`"` + time.Time(t).Format("2006-01-02") + `"`), nil
+}
+
 type Transaction struct {
-	Id       string    `json:"id"`
-	Date     time.Time `json:"date"`
-	Payee    string    `json:"payee"`
-	Accounts []Account `json:"accounts"`
+	Id       string          `json:"id"`
+	Date     TransactionDate `json:"date"`
+	Payee    string          `json:"payee"`
+	Accounts []Account       `json:"accounts"`
 }
 
 func (t Transaction) JournalDate() string {
-	return t.Date.Format("2006/01/02")
+	return time.Time(t.Date).Format("2006/01/02")
 }
 
 type Account struct {
 	Name   string `json:"name"`
 	Amount string `json:"amount"`
 }
-
-type TransactionsByDate []Transaction
-
-func (l TransactionsByDate) Len() int           { return len(l) }
-func (l TransactionsByDate) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
-func (l TransactionsByDate) Less(i, j int) bool { return l[i].Date.Before(l[j].Date) }
 
 type AccountTransaction struct {
 	Id             string    `json:"id"`

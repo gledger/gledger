@@ -43,10 +43,11 @@ func (j journal) parsePrintedTransactions(trans string) []Transaction {
 		firstLine := strings.SplitN(lines[0], " ", 2)
 
 		t.Payee = firstLine[1]
-		t.Date, err = time.Parse("2006/01/02", firstLine[0])
+		parsedTime, err := time.Parse("2006/01/02", firstLine[0])
 		if err != nil {
 			panic(err)
 		}
+		t.Date = TransactionDate(parsedTime)
 
 		for _, a := range lines[1:] {
 			a = strings.TrimLeft(a, " ")
