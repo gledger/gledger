@@ -3,7 +3,7 @@ package require
 import (
 	"time"
 
-	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/gledger/gledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 type TestingT interface {

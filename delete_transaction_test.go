@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/gledger/gledger/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 func Test_DeleteTransaction_DeletesTransactionById(t *testing.T) {

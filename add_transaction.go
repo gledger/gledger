@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/twinj/uuid"
+	"github.com/gledger/gledger/Godeps/_workspace/src/github.com/twinj/uuid"
 )
 
 func (j journal) AddTransaction(t Transaction) Transaction {

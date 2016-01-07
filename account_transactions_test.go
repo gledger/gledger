@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/zombor/go-ledger/Godeps/_workspace/src/github.com/stretchr/testify/require"
+	"github.com/gledger/gledger/Godeps/_workspace/src/github.com/stretchr/testify/require"
 )
 
 func Test_AccountTransactions_Parses_AccountTransactionsOutput(t *testing.T) {

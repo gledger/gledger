@@ -1,8 +1,8 @@
-# go-ledger
+# gledger
 
-[![Build Status](https://travis-ci.org/zombor/go-ledger.svg)](https://travis-ci.org/zombor/go-ledger)
+[![Build Status](https://travis-ci.org/gledger/gledger.svg)](https://travis-ci.org/gledger/gledger)
 
-A golang toolkit and rest API to interface with a ledger journal file
+A golang toolkit to interface with a ledger journal file
 
 This project aims to satisfy my usage patterns with ledger.
 For example, there are many parts of the journal format that I do not use (like check numbers).
@@ -68,14 +68,3 @@ This deletes a transaction from the ledger file, specified by the transaction id
 ```go
 err := j.DeleteTransaction("some-id")
 ```
-
-## HTTP API
-
-Also included in the `api` directory is an http json api server. This uses json input/output over http to interface with your ledger file using the toolkit methods above.
-
-### Supported Endpoints
-
- - `GET /`
- - `GET /transactions?account=some-account-name`
- - `POST /transactions`
- - `DELETE /transactions?id=a-transaction-id`
