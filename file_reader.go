@@ -40,7 +40,7 @@ func (r fileReader) Budget() string {
 }
 
 func (r fileReader) AccountTransaction(account string) string {
-	out, err := exec.Command("ledger", "register", "not", "budget", "and", account, "-S", "d", "-y", `%Y-%m-%d`, "--meta", "ID", "--meta-width", "40", "-f", r.path).Output()
+	out, err := exec.Command("ledger", "register", "not", "budget", "and", account, "-S", "d", "-y", `%Y-%m-%d`, "--meta", "ID", "--meta-width", "40", "payee-width", "60", "-f", r.path).Output()
 	if err != nil {
 		panic(err)
 	}
