@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"text/template"
+	"time"
 )
 
 type fileReader struct {
@@ -32,6 +33,15 @@ func (r fileReader) Balance() string {
 
 func (r fileReader) Budget() string {
 	out, err := exec.Command("ledger", "balance", "Budget:Assets", "--flat", "-f", r.path).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	return string(out)
+}
+
+func (r fileReader) BudgetInDate(start, end time.Time) string {
+	out, err := exec.Command("ledger", "balance", "Budget:Assets", "--flat", "--begin", start.Format("2006-01-02"), "--end", end.Format("2006-01-02"), "-f", r.path).Output()
 	if err != nil {
 		panic(err)
 	}

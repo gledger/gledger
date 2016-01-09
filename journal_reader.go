@@ -1,5 +1,7 @@
 package ledger
 
+import "time"
+
 type journalReader interface {
 	journalBalanceReader
 	journalBudgetReader
@@ -14,6 +16,7 @@ type journalBalanceReader interface {
 
 type journalBudgetReader interface {
 	Budget() string
+	BudgetInDate(time.Time, time.Time) string
 }
 
 type journalAccountTransactionReader interface {
